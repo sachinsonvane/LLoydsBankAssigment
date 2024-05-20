@@ -1,6 +1,7 @@
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ss.lloydsbanktest.model.Books
+import com.ss.lloydsbanktest.model.Weasley
+import com.ss.lloydsbanktest.view.WeasleyAct
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -8,10 +9,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivityViewModel constructor(private val mainRepository: MainRepository) : ViewModel() {
+class WeasleyViewModel constructor(private val mainRepository: MainRepository) : ViewModel() {
 
     val errorMessage = MutableLiveData<String>()
-    val mainOptions = MutableLiveData<List<String>>()
+    val weasley = MutableLiveData<List<Weasley>>()
 
     var job: Job? = null
     val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
@@ -19,14 +20,18 @@ class MainActivityViewModel constructor(private val mainRepository: MainReposito
     }
     val loading = MutableLiveData<Boolean>()
 
-    fun getMainOptions() {
+    fun getWeasley() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            var options = ArrayList<String>()
-            options.add("Books")
-            options.add("Spells")
-            options.add("Weasley")
+            val response = mainRepository.getWeasley()
             withContext(Dispatchers.Main) {
-                mainOptions.postValue(options)
+                if (response.isSuccessful) {
+                    println(" response : "+response.body().toString())
+                    weasley.postValue(response.body())
+                    loading.value = false
+                } else {
+                    println(" response error : "+response.message().toString())
+                    onError("Error : ${response.message()} ")
+                }
             }
         }
     }
@@ -39,5 +44,4 @@ class MainActivityViewModel constructor(private val mainRepository: MainReposito
         super.onCleared()
 
     }
-
 }

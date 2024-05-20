@@ -18,8 +18,11 @@
         android:theme="@style/Theme.LLoydsBankTest"
         tools:targetApi="31">
         <activity
-            android:name=".view.Books"
-            android:exported="false" />
+            android:name=".view.WeasleyAct" />
+        <activity
+            android:name=".view.SpellsAct" />
+        <activity
+            android:name=".view.BooksAct"/>
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

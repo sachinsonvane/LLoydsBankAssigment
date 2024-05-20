@@ -14,10 +14,10 @@ interface RetrofitService {
     suspend fun getBooks() : Response<List<Books>>
 
     @GET("es/spells")
-    suspend fun getSpells() : Response<Spells>
+    suspend fun getSpells() : Response<List<Spells>>
 
     @GET("es/characters?search=Weasley")
-    suspend fun getWeasley() : Response<Weasley>
+    suspend fun getWeasley() : Response<List<Weasley>>
 
     companion object {
         var retrofitService: RetrofitService? = null
