@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="7dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_bg"
+        android:padding="@dimen/row_item_inner_padding">
+
+        <ImageView
+            android:id="@+id/weasleyRowImg"
+            android:layout_width="@dimen/option_img_w"
+            android:layout_height="@dimen/option_img_h"
+            android:src="@drawable/harry"
+            />
+        <TextView
+            android:id="@+id/weasleyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/option_title_color"
+            android:textSize="@dimen/title_font_size_20"
+            android:layout_marginLeft="@dimen/margin_left_10"
+            android:textStyle="bold|italic"
+            android:layout_toRightOf="@+id/weasleyRowImg"
+            />
+        <TextView
+            android:id="@+id/weasleyHogwartsHouse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/option_title_color"
+            android:textSize="@dimen/subtitle_font_size_16"
+            android:layout_marginLeft="@dimen/margin_left_10"
+            android:layout_marginTop="@dimen/margin_left_10"
+            android:textStyle="italic"
+            android:layout_below="@+id/weasleyName"
+            android:layout_toRightOf="@+id/weasleyRowImg"
+            />
+        <TextView
+            android:id="@+id/weasleyInterpretedBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/option_title_color"
+            android:textSize="@dimen/subtitle_font_size_16"
+            android:layout_marginLeft="@dimen/margin_left_10"
+            android:layout_marginTop="@dimen/margin_left_10"
+            android:textStyle="italic"
+            android:layout_below="@+id/weasleyHogwartsHouse"
+            android:layout_toRightOf="@+id/weasleyRowImg"
+            />
+        <TextView
+            android:id="@+id/weasleyBirthdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/option_title_color"
+            android:textSize="@dimen/subtitle_font_size_16"
+            android:layout_marginLeft="@dimen/margin_left_10"
+            android:layout_marginTop="@dimen/margin_left_10"
+            android:textStyle="italic"
+            android:layout_below="@+id/weasleyInterpretedBy"
+            android:layout_toRightOf="@+id/weasleyRowImg"
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

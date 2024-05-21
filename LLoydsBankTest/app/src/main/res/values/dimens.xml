@@ -1,3 +1,13 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin_left_10">10dp</dimen>
+    <dimen name="title_font_size_20">20sp</dimen>
+    <dimen name="subtitle_font_size_16">16sp</dimen>
+    <dimen name="option_img_h">178dp</dimen>
+    <dimen name="option_img_w">120dp</dimen>
+    <dimen name="logo_img_h">98dp</dimen>
+    <dimen name="logo_img_w">200dp</dimen>
+    <dimen name="optopn_rcy_v_margin_top">10dp</dimen>
+    <dimen name="row_item_inner_padding">10dp</dimen>
+
 </resources>
