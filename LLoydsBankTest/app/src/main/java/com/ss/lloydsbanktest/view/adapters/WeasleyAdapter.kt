@@ -7,12 +7,12 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.ss.lloydsbanktest.R
 import com.ss.lloydsbanktest.model.Books
 import com.ss.lloydsbanktest.model.MOptions
 import com.ss.lloydsbanktest.model.Weasley
 import com.ss.lloydsbanktest.view.BooksAct
-import com.ss.lloydsbanktest.view.MainActivity
 import java.util.Date
 
 class WeasleyAdapter(private val dataSet: List<Weasley>) :
@@ -50,8 +50,10 @@ class WeasleyAdapter(private val dataSet: List<Weasley>) :
         viewHolder.weasleyHogwartsHouse.text = dataSet.get(position).hogwartsHouse
         viewHolder.weasleyInterpretedBy.text = dataSet.get(position).interpretedBy
         viewHolder.weasleyBirthdate.text = dataSet.get(position).birthdate
-        //viewHolder.bookRowImg.setBackgroundResource(dataSet.get(position).img);
 
+        Picasso.get()
+            .load(dataSet.get(position).image)
+            .into(viewHolder.weasleyRowImg)
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -33,10 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -44,11 +44,6 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
-
-    //Coroutine
-//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
-//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
-    //implementation("com.google.code.gson:gson:2.8.6")
 
     // - - Retrofit2
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -60,7 +55,16 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
+    implementation("com.squareup.picasso:picasso:2.71828")
+
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("io.mockk:mockk:1.13.4")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+
 }

@@ -24,7 +24,7 @@
         <activity
             android:name=".view.BooksAct"/>
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.HomeAct"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,10 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ss.lloydsbanktest.R
 import com.ss.lloydsbanktest.model.MOptions
-import com.ss.lloydsbanktest.view.MainActivity
+import com.ss.lloydsbanktest.view.HomeAct
 import java.util.Date
 
-class MOptionsAdapter(val mMainActivity: MainActivity, private val dataSet: List<MOptions>) :
+class MOptionsAdapter(val homeAct: HomeAct, private val dataSet: List<MOptions>) :
     RecyclerView.Adapter<MOptionsAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -49,11 +49,11 @@ class MOptionsAdapter(val mMainActivity: MainActivity, private val dataSet: List
         viewHolder.optionLay.setOnClickListener(){
 
             if(position==0){
-                mMainActivity.goToBooksAct()
+                homeAct.goToBooksAct()
             }else  if(position==1){
-                mMainActivity.goToWeasleyAct()
+                homeAct.goToWeasleyAct()
             }else  if(position==2){
-                mMainActivity.goToSpellAct()
+                homeAct.goToSpellAct()
             }
         }
 

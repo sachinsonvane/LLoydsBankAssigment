@@ -4,11 +4,13 @@ import MyViewModelFactory
 import WeasleyViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ss.lloydsbanktest.MyApplication
 import com.ss.lloydsbanktest.R
+import com.ss.lloydsbanktest.databinding.ActivityWeasleyBinding
 import com.ss.lloydsbanktest.view.adapters.BooksAdapter
 import com.ss.lloydsbanktest.view.adapters.WeasleyAdapter
 import com.ss.lloydsbanktest.viewmodel.SpellsActViewModel
@@ -16,6 +18,7 @@ import com.ss.lloydsbanktest.viewmodel.SpellsActViewModel
 class WeasleyAct : AppCompatActivity() {
 
     lateinit var viewModel: WeasleyViewModel
+    lateinit var binding: ActivityWeasleyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weasley)
@@ -24,6 +27,9 @@ class WeasleyAct : AppCompatActivity() {
     }
 
     fun init(){
+
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_weasley)
+
         viewModel = ViewModelProvider(this, MyViewModelFactory(MyApplication.instance.mainRepository)).get(WeasleyViewModel::class.java)
 
         viewModel.getWeasley()
@@ -32,10 +38,8 @@ class WeasleyAct : AppCompatActivity() {
             println("Response WeasleyAct "+it.toString())
 
             val weasleyAdapter = WeasleyAdapter(it)
-
-            val recyclerView: RecyclerView = findViewById(R.id.weasleyRecyView)
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = weasleyAdapter
+            binding.weasleyRecyView.layoutManager = LinearLayoutManager(this)
+            binding.weasleyRecyView.adapter = weasleyAdapter
         })
     }
 }
