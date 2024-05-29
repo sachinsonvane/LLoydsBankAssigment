@@ -98,4 +98,14 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    testImplementation("org.mockito:mockito-core:2.11.0")
+    testImplementation("android.arch.core:core-testing:1.1.1")
+    testImplementation("com.google.truth:truth:1.1")
+// For Robolectric tests.
+    testImplementation("com.google.dagger:hilt-android-testing:2.28-alpha")
+// For instrumented tests.
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.28-alpha")
+
+    kaptTest("com.google.dagger:hilt-android-compiler:2.40.5")
 }
