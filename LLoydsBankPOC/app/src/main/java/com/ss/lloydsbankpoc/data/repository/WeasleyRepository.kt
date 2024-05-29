@@ -1,5 +1,6 @@
 package com.ss.lloydsbankpoc.data.repository
 
+import android.util.Log
 import com.ss.lloydsbankpoc.common.ResultWrapper
 import com.ss.lloydsbankpoc.data.api.ApiService
 import com.ss.lloydsbankpoc.data.db.WeasleyDao
@@ -20,30 +21,28 @@ class WeasleyRepository @Inject constructor(private val weasleyDao:  WeasleyDao,
     }
 
     override suspend fun refreshWeasley() {
-        TODO("Not yet implemented")
-    }
-
-    /*override suspend fun refreshUsers() {
         try {
-            val response = apiService.getAllUsers()
+            val response = apiService.getWeasley()
             if (response.isSuccessful) {
                 if (response.code() == 200) {
-                    val users = response.body()?.data?.map { user ->
-                        UserTable(
-                            id = user.id!!,
-                            email = user.email!!,
-                            firstName = user.firstName!!,
-                            lastName = user.lastName!!,
-                            avatar = user.avatar!!
+                    val weasleyData = response.body()
+                    val weasleyArr = weasleyData!!.map { weasley ->
+                        WeasleyTable(
+                            fullName = weasley.fullName!!,
+                            nickname = weasley.nickname!!,
+                            hogwartsHouse = weasley.hogwartsHouse!!,
+                            interpretedBy = weasley.interpretedBy!!,
+                            image = weasley.image!!,
+                            birthdate = weasley.birthdate!!
                         )
                     }
-                    if (users != null) {
-                        userDao.insertAll(users)
+                    if (weasleyArr != null) {
+                        weasleyDao.insertAll(weasleyArr)
                     } // Insert the mapped data into the database
                 }
             }
         } catch (e: Exception) {
             Log.e("USER_API", e.message.toString())
         }
-    }*/
+    }
 }

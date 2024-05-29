@@ -1,4 +1,4 @@
-package com.ss.lloydsbankpoc.ui.theme
+package com.ss.lloydsbankpoc.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

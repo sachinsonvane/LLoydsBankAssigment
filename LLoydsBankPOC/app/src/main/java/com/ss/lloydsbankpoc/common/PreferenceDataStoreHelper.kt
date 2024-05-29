@@ -18,7 +18,6 @@ import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
-// Declaring/Creating the DataStore File for Application
 private val Context.dataStore by preferencesDataStore(
     name = "PreferenceDataStore",
     corruptionHandler = ReplaceFileCorruptionHandler(
@@ -33,9 +32,6 @@ class PreferenceDataStoreHelper @Inject constructor(context: Context) :
     // dataSource access the DataStore file and does the manipulation based on our requirements.
     private val dataSource = context.dataStore
 
-    /* This returns us a flow of data from DataStore.
-    Basically as soon we update the value in Datastore,
-    the values returned by it also changes. */
     override suspend fun <T> getPreference(key: Preferences.Key<T>, defaultValue: T):
             Flow<T> = dataSource.data.catch { exception ->
         if (exception is IOException) {

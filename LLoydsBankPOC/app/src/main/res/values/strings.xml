@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">LLoydsBankPOC</string>
+    <string name="books_tab_title">Books</string>
+    <string name="weasley_tab_title">Weasley</string>
+    <string name="spells_tab_title">Spells</string>
+    <string name="dummy1_title">dummy1</string>
+    <string name="dummy2_title">dummy2</string>
+    <string name="logo_title">LLoydsBankTest Assignment</string>
+    <string name="books_name">Books</string>
+    <string name="spells_name">Spells</string>
+    <string name="weasley_name">Weasley</string>
 </resources>

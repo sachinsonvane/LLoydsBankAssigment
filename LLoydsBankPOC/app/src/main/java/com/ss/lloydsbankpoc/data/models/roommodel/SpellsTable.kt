@@ -7,7 +7,9 @@ import com.ss.lloydsbankpoc.data.models.roommodel.TableNames.SPELLS_TABLE
 
 @Entity(tableName = SPELLS_TABLE)
 data class SpellsTable(
-    @PrimaryKey val id: Int,
     @ColumnInfo(name = "spell") val spell: String,
     @ColumnInfo(name = "use") val use: String,
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}

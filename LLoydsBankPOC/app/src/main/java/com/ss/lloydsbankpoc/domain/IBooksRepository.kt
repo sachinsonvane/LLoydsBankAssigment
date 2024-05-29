@@ -12,12 +12,4 @@ interface IBooksRepository {
     val allBooks: Flow<List<BooksTable>>
     suspend fun getBooksFromServer(): ResultWrapper<Response<Books>>
 
-//    suspend fun refreshSpells()
-//    val allSpells: Flow<List<SpellsTable>>
-//    suspend fun getSpellsFromServer(): ResultWrapper<Response<Spells>>
-//
-//    suspend fun refreshWeasley()
-//    val allWeasley: Flow<List<SpellsTable>>
-//    suspend fun getWeasleyFromServer(): ResultWrapper<Response<Weasley>>
-
 }

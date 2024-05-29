@@ -7,14 +7,19 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.ss.lloydsbankpoc.R
 import kotlinx.coroutines.flow.Flow
 import java.util.concurrent.atomic.AtomicBoolean
 
 object Route {
-    const val HOME_SCREEN = "HOME_SCREEN"
-    const val PROFILE_SCREEN = "PROFILE_SCREEN"
-    const val DRAWER_DUMMY1_SCREEN = "DRAWER_DUMMY1_SCREEN"
-    const val DRAWER_DUMMY2_SCREEN = "DRAWER_DUMMY2_SCREEN"
+    const val BOOKS_SCREEN = "BOOKS_SCREEN"
+    const val SPELLS_SCREEN = "SPELLS_SCREEN"
+    const val WEASLEY_SCREEN = "WEASLEY_SCREEN"
+}
+
+object Constants {
+
+    const val WOOL_DETAILS_ID = "woolId"
 }
 
 interface IPreferenceDataStoreAPI {
@@ -33,6 +38,7 @@ object PreferenceDataStoreConstants {
     val INT_KEY = intPreferencesKey("INT_KEY")
     val LONG_KEY = longPreferencesKey("LONG_KEY")
 }
+
 
 
 /** This custom class ensures that observers are notified of a value change only once.

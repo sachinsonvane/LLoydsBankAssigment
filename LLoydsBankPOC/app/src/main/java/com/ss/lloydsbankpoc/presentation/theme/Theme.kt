@@ -1,4 +1,4 @@
-package com.ss.lloydsbankpoc.ui.theme
+package com.ss.lloydsbankpoc.presentation.theme
 
 import android.app.Activity
 import android.os.Build
