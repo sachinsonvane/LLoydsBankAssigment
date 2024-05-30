@@ -2,10 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="GetBooksFromServerTest">
+      <entry key="ComposeUiTest">
         <State />
       </entry>
-      <entry key="GetBooksListUseCaseTest">
+      <entry key="GetBooksFromServerTest">
         <State />
       </entry>
       <entry key="app">
@@ -23,6 +23,9 @@
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-05-29T12:25:54.723398300Z" />
         </State>
+      </entry>
+      <entry key="textIfLLoydsBankTestAssignmentIsDisplayed()">
+        <State />
       </entry>
     </value>
   </component>

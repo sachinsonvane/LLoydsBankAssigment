@@ -92,7 +92,7 @@ fun BooksScreen(navController: NavController,
                 LazyColumn(
                     modifier = Modifier.fillMaxWidth(),
                     contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     items(booksState.allBooksData){
                         Card(modifier = Modifier.fillMaxWidth()) {
