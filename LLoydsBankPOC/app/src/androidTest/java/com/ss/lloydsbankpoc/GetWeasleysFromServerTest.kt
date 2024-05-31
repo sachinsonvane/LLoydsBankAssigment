@@ -1,7 +1,9 @@
 package com.ss.lloydsbankpoc
 
 import com.ss.lloydsbankpoc.data.repository.BooksRepository
+import com.ss.lloydsbankpoc.data.repository.WeasleyRepository
 import com.ss.lloydsbankpoc.domain.usecases.BooksDataUseCase
+import com.ss.lloydsbankpoc.domain.usecases.WeasleyDataUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,9 +16,9 @@ import org.junit.Test
 import javax.inject.Singleton
 
 @Singleton
-class GetBooksFromServerTest  {
+class GetWeasleysFromServerTest  {
 
-    lateinit var repository: BooksRepository
+    lateinit var weasleyRepository: WeasleyRepository
 
     var job: Job? = null
     val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
@@ -29,11 +31,11 @@ class GetBooksFromServerTest  {
     }
 
     @Test
-    fun getBooksList() {
+    fun getWeasleyList() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
 
-            val booksDataUseCase = BooksDataUseCase(booksRepository = repository)
-            var data = booksDataUseCase.invoke()
+            val weasleyDataUseCase = WeasleyDataUseCase(weasleyRepository = weasleyRepository)
+            var data = weasleyDataUseCase.invoke()
             withContext(Dispatchers.Main) {
 
                 data.map {
@@ -43,4 +45,3 @@ class GetBooksFromServerTest  {
         }
     }
 }
-
