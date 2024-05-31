@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -61,7 +62,7 @@ fun BooksScreen(navController: NavController,
             .fillMaxSize()
             .background(color = Color.White)
     ) {
-        if (isVisible.value)
+        if (isVisible.value) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -77,11 +78,16 @@ fun BooksScreen(navController: NavController,
                 ) {
 
                     Row {
-                        Image(painter = painterResource(id = R.drawable.logo_img),
+                        Image(
+                            painter = painterResource(id = R.drawable.logo_img),
                             contentDescription = null,
                         )
                         Spacer(modifier = Modifier.size(10.dp))
-                        Text(text= stringResource(id = R.string.logo_title),fontSize = 22.sp, color = Color("#05350B".toColorInt()))
+                        Text(
+                            text = stringResource(id = R.string.logo_title),
+                            fontSize = 22.sp,
+                            color = Color("#05350B".toColorInt())
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.size(16.dp))
@@ -91,13 +97,14 @@ fun BooksScreen(navController: NavController,
                     contentPadding = PaddingValues(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    items(booksState.allBooksData){
+                    items(booksState.allBooksData) {
                         Card(modifier = Modifier.fillMaxWidth()) {
-                            Row(modifier = Modifier.padding(10.dp).background(Color.Transparent).clickable(
-                                onClick = {
-                                    navController.navigate(Route.SPELLS_SCREEN)
-                                }
-                            )) {
+                            Row(modifier = Modifier.padding(10.dp).background(Color.Transparent)
+                                .clickable(
+                                    onClick = {
+                                        navController.navigate(Route.SPELLS_SCREEN)
+                                    }
+                                )) {
                                 AsyncImage(
                                     model = it.cover,
                                     contentDescription = null,
@@ -105,15 +112,34 @@ fun BooksScreen(navController: NavController,
                                 )
                                 Spacer(modifier = Modifier.size(10.dp))
                                 Column {
-                                    Text(text = it.title, color = Color("#05350B".toColorInt()),fontSize = 18.sp)
+                                    Text(
+                                        text = it.title,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 18.sp
+                                    )
                                     Spacer(modifier = Modifier.size(8.dp))
-                                    Text(text = it.originalTitle, color = Color("#05350B".toColorInt()),fontSize = 15.sp)
+                                    Text(
+                                        text = it.originalTitle,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 15.sp
+                                    )
                                 }
                             }
                         }
                     }
                 }
             }
+        }else{
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CircularProgressIndicator(
+                    progress = 0.89f,
+                )
+            }
+        }
     }
 
 }

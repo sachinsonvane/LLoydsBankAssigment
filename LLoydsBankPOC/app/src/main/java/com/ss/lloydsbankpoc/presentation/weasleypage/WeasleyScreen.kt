@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -59,7 +60,7 @@ fun WeasleyScreen(navController: NavController,
             .fillMaxSize()
             .background(color = Color.White)
     ) {
-        if (isVisible.value)
+        if (isVisible.value) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -76,7 +77,11 @@ fun WeasleyScreen(navController: NavController,
 
                     Row {
 
-                        Text(text= stringResource(id = R.string.weasley_name),fontSize = 22.sp, color = Color("#05350B".toColorInt()))
+                        Text(
+                            text = stringResource(id = R.string.weasley_name),
+                            fontSize = 22.sp,
+                            color = Color("#05350B".toColorInt())
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.size(16.dp))
@@ -86,13 +91,14 @@ fun WeasleyScreen(navController: NavController,
                     contentPadding = PaddingValues(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(weasleyState.allWeasleyData){
+                    items(weasleyState.allWeasleyData) {
                         Card(modifier = Modifier.fillMaxWidth()) {
-                            Row(modifier = Modifier.padding(10.dp).background(Color.Transparent).clickable(
-                                onClick = {
-                                    navController.navigate(Route.SPELLS_SCREEN)
-                                }
-                            )) {
+                            Row(modifier = Modifier.padding(10.dp).background(Color.Transparent)
+                                .clickable(
+                                    onClick = {
+                                        navController.navigate(Route.SPELLS_SCREEN)
+                                    }
+                                )) {
                                 AsyncImage(
                                     model = it.image,
                                     contentDescription = null,
@@ -100,18 +106,45 @@ fun WeasleyScreen(navController: NavController,
                                 )
                                 Spacer(modifier = Modifier.size(10.dp))
                                 Column {
-                                    Text(text = it.fullName, color = Color("#05350B".toColorInt()),fontSize = 18.sp)
+                                    Text(
+                                        text = it.fullName,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 18.sp
+                                    )
                                     Spacer(modifier = Modifier.size(8.dp))
-                                    Text(text = it.hogwartsHouse, color = Color("#05350B".toColorInt()),fontSize = 15.sp)
+                                    Text(
+                                        text = it.hogwartsHouse,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 15.sp
+                                    )
                                     Spacer(modifier = Modifier.size(8.dp))
-                                    Text(text = it.birthdate, color = Color("#05350B".toColorInt()),fontSize = 15.sp)
+                                    Text(
+                                        text = it.birthdate,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 15.sp
+                                    )
                                     Spacer(modifier = Modifier.size(8.dp))
-                                    Text(text = it.interpretedBy, color = Color("#05350B".toColorInt()),fontSize = 15.sp)
+                                    Text(
+                                        text = it.interpretedBy,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 15.sp
+                                    )
                                 }
                             }
                         }
                     }
                 }
             }
+        }else{
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CircularProgressIndicator(
+                    progress = 0.89f,
+                )
+            }
+        }
     }
 }

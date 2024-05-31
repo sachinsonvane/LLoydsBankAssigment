@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -62,7 +63,7 @@ fun SpellsScreen(navController: NavController,
             .fillMaxSize()
             .background(color = Color.White)
     ) {
-        if (isVisible.value)
+        if (isVisible.value) {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -78,7 +79,11 @@ fun SpellsScreen(navController: NavController,
                 ) {
 
                     Row {
-                        Text(text= stringResource(id = R.string.spells_name),fontSize = 22.sp, color = Color("#05350B".toColorInt()))
+                        Text(
+                            text = stringResource(id = R.string.spells_name),
+                            fontSize = 22.sp,
+                            color = Color("#05350B".toColorInt())
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.size(16.dp))
@@ -88,29 +93,54 @@ fun SpellsScreen(navController: NavController,
                     contentPadding = PaddingValues(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(spellsState.allSpellsData){
+                    items(spellsState.allSpellsData) {
                         Card(modifier = Modifier.fillMaxWidth()) {
-                            Row(modifier = Modifier.padding(10.dp).background(Color.Transparent).clickable(
-                                onClick = {
-                                    navController.navigate(Route.WEASLEY_SCREEN)
-                                }
-                            )) {
-                                Image(painter = painterResource(id = R.drawable.harry),
+                            Row(modifier = Modifier.padding(10.dp).background(Color.Transparent)
+                                .clickable(
+                                    onClick = {
+                                        navController.navigate(Route.WEASLEY_SCREEN)
+                                    }
+                                )) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.harry),
                                     contentDescription = null,
                                     modifier = Modifier.align(Alignment.CenterVertically)
                                 )
                                 Spacer(modifier = Modifier.size(10.dp))
                                 Column {
-                                    Text(text = it.spell, color = Color("#05350B".toColorInt()),fontSize = 18.sp)
+                                    Text(
+                                        text = it.spell,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 18.sp
+                                    )
                                     Spacer(modifier = Modifier.size(8.dp))
-                                    Text(text = it.use, color = Color("#05350B".toColorInt()),fontSize = 15.sp)
+                                    Text(
+                                        text = it.use,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 15.sp
+                                    )
                                     Spacer(modifier = Modifier.size(8.dp))
-                                    Text(text = nowDate, color = Color("#05350B".toColorInt()),fontSize = 15.sp)
+                                    Text(
+                                        text = nowDate,
+                                        color = Color("#05350B".toColorInt()),
+                                        fontSize = 15.sp
+                                    )
                                 }
                             }
                         }
                     }
                 }
             }
+        }else{
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CircularProgressIndicator(
+                    progress = 0.89f,
+                )
+            }
+        }
     }
 }
