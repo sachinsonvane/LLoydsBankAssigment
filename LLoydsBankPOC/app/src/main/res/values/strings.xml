@@ -9,4 +9,8 @@
     <string name="books_name">Books</string>
     <string name="spells_name">Spells</string>
     <string name="weasley_name">Weasley</string>
+    <string name="error_str">Error!</string>
+    <string name="data_not_found_str">Data not found!</string>
+    <string name="api_response_null_str">API null response!</string>
+    <string name="api_network_error_str">API network error!</string>
 </resources>

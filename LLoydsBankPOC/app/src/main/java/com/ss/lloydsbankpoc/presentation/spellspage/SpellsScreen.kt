@@ -31,11 +31,9 @@ import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
 import com.ss.lloydsbankpoc.R
 import com.ss.lloydsbankpoc.common.Route
-import com.ss.lloydsbankpoc.presentation.bookspage.viewmodel.BooksEvents
-import com.ss.lloydsbankpoc.presentation.spellspage.viewmodel.SpellsEvents
+import com.ss.lloydsbankpoc.data.models.allevents.SpellsEvents
 import com.ss.lloydsbankpoc.presentation.spellspage.viewmodel.SpellsViewModel
 import java.util.Date
 

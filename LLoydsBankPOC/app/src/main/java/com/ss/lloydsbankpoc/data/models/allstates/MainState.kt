@@ -1,4 +1,4 @@
-package com.ss.lloydsbankpoc.presentation.main.viewmodel
+package com.ss.lloydsbankpoc.data.models.allstates
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList

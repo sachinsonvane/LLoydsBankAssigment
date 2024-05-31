@@ -1,5 +1,6 @@
 package com.ss.lloydsbankpoc.di
 
+import com.ss.lloydsbankpoc.common.Constants
 import com.ss.lloydsbankpoc.data.api.ApiService
 import dagger.Module
 import dagger.Provides
@@ -36,7 +37,7 @@ class NetworkModule {
     @Singleton
     fun provideRestApiService(okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-            .baseUrl("https://potterapi-fedeperin.vercel.app/")
+            .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())

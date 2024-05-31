@@ -29,7 +29,7 @@ private val Context.dataStore by preferencesDataStore(
 @Singleton
 class PreferenceDataStoreHelper @Inject constructor(context: Context) :
     IPreferenceDataStoreAPI {
-    // dataSource access the DataStore file and does the manipulation based on our requirements.
+
     private val dataSource = context.dataStore
 
     override suspend fun <T> getPreference(key: Preferences.Key<T>, defaultValue: T):
@@ -44,26 +44,22 @@ class PreferenceDataStoreHelper @Inject constructor(context: Context) :
         result
     }
 
-    /* This returns the last saved value of the key. If we change the value,
-        it wont effect the values produced by this function */
     override suspend fun <T> getFirstPreference(key: Preferences.Key<T>, defaultValue: T):
             T = dataSource.data.first()[key] ?: defaultValue
 
-    // This Sets the value based on the value passed in value parameter.
+
     override suspend fun <T> putPreference(key: Preferences.Key<T>, value: T) {
         dataSource.edit { preferences ->
             preferences[key] = value
         }
     }
 
-    // This Function removes the Key Value pair from the datastore, hereby removing it completely.
     override suspend fun <T> removePreference(key: Preferences.Key<T>) {
         dataSource.edit { preferences ->
             preferences.remove(key)
         }
     }
 
-    // This function clears the entire Preference Datastore.
     override suspend fun clearAllPreference() {
         dataSource.edit { preferences ->
             preferences.clear()

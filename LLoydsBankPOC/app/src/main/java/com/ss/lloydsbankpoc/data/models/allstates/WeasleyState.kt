@@ -1,4 +1,4 @@
-package com.ss.lloydsbankpoc.presentation.weasleypage.viewmodel
+package com.ss.lloydsbankpoc.data.models.allstates
 
 import com.ss.lloydsbankpoc.data.models.roommodel.WeasleyTable
 

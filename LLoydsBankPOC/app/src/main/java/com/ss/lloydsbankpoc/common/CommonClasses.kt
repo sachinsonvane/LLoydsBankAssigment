@@ -1,26 +1,14 @@
 package com.ss.lloydsbankpoc.common
 
+import android.util.Log
+import android.widget.Toast
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.core.longPreferencesKey
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.ss.lloydsbankpoc.R
+import com.ss.lloydsbankpoc.App
 import kotlinx.coroutines.flow.Flow
 import java.util.concurrent.atomic.AtomicBoolean
-
-object Route {
-    const val BOOKS_SCREEN = "BOOKS_SCREEN"
-    const val SPELLS_SCREEN = "SPELLS_SCREEN"
-    const val WEASLEY_SCREEN = "WEASLEY_SCREEN"
-}
-
-object Constants {
-
-    const val WOOL_DETAILS_ID = "woolId"
-}
 
 interface IPreferenceDataStoreAPI {
     suspend fun <T> getPreference(key: Preferences.Key<T>, defaultValue: T): Flow<T>
@@ -30,34 +18,29 @@ interface IPreferenceDataStoreAPI {
     suspend fun clearAllPreference()
 }
 
-object PreferenceDataStoreConstants {
-    val ACCESS_TOKEN_KEY = stringPreferencesKey("ACCESS_TOKEN_KEY")
-    val REFRESH_TOKEN = stringPreferencesKey("REFRESH_TOKEN")
-
-    // Samples
-    val INT_KEY = intPreferencesKey("INT_KEY")
-    val LONG_KEY = longPreferencesKey("LONG_KEY")
+fun showMessage(msg: String){
+    Toast.makeText(App.instance,msg,Toast.LENGTH_SHORT).show()
 }
 
+fun showLogs(msg: String){
+    if(Constants.IS_LOGS_ENABLE) {
+        Log.e(Constants.APP_LOGS_TAG, msg)
+    }
+}
 
-
-/** This custom class ensures that observers are notified of a value change only once.
- *  It uses an AtomicBoolean to keep track of whether there's a pending event or not */
 class SingleEventLiveData<T> : MutableLiveData<T>() {
-    // AtomicBoolean to track if there's a pending event
+
     private val pending = AtomicBoolean(false)
 
-    // Override the observe function to handle single events
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
         super.observe(owner) { value ->
-            // Check if there's a pending event
+
             if (pending.compareAndSet(true, false)) {
                 observer.onChanged(value) // Notify the observer with the value
             }
         }
     }
 
-    // Override the setValue function to set the value and mark it as pending
     override fun setValue(value: T) {
         pending.set(true) // Mark the event as pending
         super.setValue(value) // Set the value in the parent class (MutableLiveData)

@@ -1,6 +1,5 @@
 package com.ss.lloydsbankpoc.presentation.weasleypage
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,7 +23,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,8 +32,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.ss.lloydsbankpoc.R
 import com.ss.lloydsbankpoc.common.Route
-import com.ss.lloydsbankpoc.presentation.bookspage.viewmodel.BooksEvents
-import com.ss.lloydsbankpoc.presentation.weasleypage.viewmodel.WeasleyEvents
+import com.ss.lloydsbankpoc.data.models.allevents.WeasleyEvents
 import com.ss.lloydsbankpoc.presentation.weasleypage.viewmodel.WeasleyViewModel
 
 @Composable

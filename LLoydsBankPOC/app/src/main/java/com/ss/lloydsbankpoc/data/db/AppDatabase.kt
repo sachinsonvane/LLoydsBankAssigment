@@ -6,7 +6,6 @@ import com.ss.lloydsbankpoc.data.models.roommodel.BooksTable
 import com.ss.lloydsbankpoc.data.models.roommodel.SpellsTable
 import com.ss.lloydsbankpoc.data.models.roommodel.WeasleyTable
 
-
 @Database(
     entities = [BooksTable::class, SpellsTable::class,WeasleyTable::class],
     version = 1,

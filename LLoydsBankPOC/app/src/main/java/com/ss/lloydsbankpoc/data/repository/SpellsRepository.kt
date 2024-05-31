@@ -1,7 +1,11 @@
 package com.ss.lloydsbankpoc.data.repository
 
 import android.util.Log
+import com.ss.lloydsbankpoc.App
+import com.ss.lloydsbankpoc.R
 import com.ss.lloydsbankpoc.common.ResultWrapper
+import com.ss.lloydsbankpoc.common.showLogs
+import com.ss.lloydsbankpoc.common.showMessage
 import com.ss.lloydsbankpoc.data.api.ApiService
 import com.ss.lloydsbankpoc.data.db.SpellsDao
 import com.ss.lloydsbankpoc.data.db.WeasleyDao
@@ -32,17 +36,23 @@ class SpellsRepository @Inject constructor(private val spellsDao: SpellsDao, val
                     val spellsData = response.body()
                     val spellsArr = spellsData!!.map { spells ->
                         SpellsTable(
-                            spell = spells.spell!!,
-                            use = spells.use!!,
+                            spell = spells.spell,
+                            use = spells.use,
                         )
                     }
                     if (spellsArr != null) {
                         spellsDao.insertAll(spellsArr)
-                    } // Insert the mapped data into the database
+                    }else{
+                        showMessage(App.instance.resources.getResourceName(R.string.data_not_found_str))
+                    }
+                }else{
+                    showMessage(App.instance.resources.getResourceName(R.string.api_response_null_str))
                 }
+            }else{
+                showMessage(App.instance.resources.getResourceName(R.string.api_network_error_str))
             }
         } catch (e: Exception) {
-            Log.e("USER_API", e.message.toString())
+            showLogs(e.message.toString())
         }
     }
 }

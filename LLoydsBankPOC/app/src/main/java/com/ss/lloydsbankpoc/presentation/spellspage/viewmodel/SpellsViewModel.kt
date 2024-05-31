@@ -4,6 +4,12 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ss.lloydsbankpoc.App
+import com.ss.lloydsbankpoc.R
+import com.ss.lloydsbankpoc.common.showMessage
+import com.ss.lloydsbankpoc.data.models.allevents.BooksEvents
+import com.ss.lloydsbankpoc.data.models.allevents.SpellsEvents
+import com.ss.lloydsbankpoc.data.models.allstates.SpellsStates
 import com.ss.lloydsbankpoc.data.repository.SpellsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -28,12 +34,7 @@ class SpellsViewModel @Inject constructor(private val spellsRepository: SpellsRe
                 }
             }
             is SpellsEvents.ShowToastMessage -> {
-                /*  if (events.type == application.getString(R.string.ocean))
-                      Toast.makeText(application, "${_state.value.allOceanData}", Toast.LENGTH_SHORT)
-                          .show()
-                  else
-                      Toast.makeText(application, "${_state.value.allWoodsData}", Toast.LENGTH_SHORT)
-                          .show()*/
+                showMessage(App.instance.resources.getResourceName(R.string.error_str))
             }
         }
     }

@@ -3,6 +3,8 @@ package com.ss.lloydsbankpoc.presentation.main.viewmodel
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.ss.lloydsbankpoc.data.models.allevents.MainEvents
+import com.ss.lloydsbankpoc.data.models.allstates.MainState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
